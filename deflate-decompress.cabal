@@ -1,0 +1,54 @@
+cabal-version:      3.0
+name:               deflate-decompress
+synopsis:           Educational implementation of DEFLATE decompressor.
+description:        Our implementation of DEFLATE decompressor for TIPL course at MIPT using Haskell and based on RFC 1951 memo.
+version:            0.1.0.0
+license:            MIT
+license-file:       LICENSE
+author:             Pristalov R. & Tsedenov A.
+maintainer:         pristalov.rm@phystech.edu
+category:           Codec
+build-type:         Simple
+extra-doc-files:    CHANGELOG.md
+
+common warnings
+    ghc-options: -Wall
+
+library
+    -- import common warning flags
+    import:           warnings
+
+    -- modules exported by the library
+    exposed-modules:
+        Codec.Deflate,
+        Codec.Deflate.Decoder,
+        Codec.Deflate.GlobalTypes,
+        Data.BitStream,
+        Data.Huffman
+
+    -- other library packages for implementation with effectiveness of `bytestring`
+    -- dep's for assemblying binary input data flow and mtl for monade's transformers
+    build-depends:
+        base >=4.12 && <5,
+        bytestring >=0.10,
+        mtl >=2.2
+
+    -- directories containing source files
+    hs-source-dirs:   src
+
+    -- base language of the package
+    default-language: Haskell2010
+
+test-suite deflate-decompress-test
+    import:           warnings
+    default-language: Haskell2010
+    type:             exitcode-stdio-1.0
+    hs-source-dirs:   test
+    main-is:          Main.hs
+    build-depends:
+        base,
+        bytestring,
+        mtl,
+        deflate-decompress
+
+

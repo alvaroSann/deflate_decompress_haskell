@@ -1,0 +1,3 @@
+Test suite deflate-decompress-test: RUNNING...
+Test suite deflate-decompress-test: PASS
+Test suite logged to: /home/alvaro-sann/programming/haskell/deflate-decompress/./dist-newstyle/build/x86_64-linux/ghc-9.6.7/deflate-decompress-0.1.0.0/t/deflate-decompress-test/test/deflate-decompress-0.1.0.0-deflate-decompress-test.log
