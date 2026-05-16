@@ -1,6 +1,7 @@
 # DEFLATE decompressor (RFC 1951) на Haskell
 
 Учебная реализация распаковщика DEFLATE для курса «Теория реализации языков программирования».  
+
 Проект представляет собой библиотеку на Haskell, принимающую сжатые данные в чистом формате DEFLATE и возвращающую исходную байтовую строку.
 
 ## Требования
@@ -13,6 +14,7 @@
 1. Клонируйте репозиторий:
 
 `git clone https://github.com/alvaroSann/deflate-decompress.git`
+
 `cd deflate-decompress`
 
 2. Соберите проект:
@@ -46,11 +48,11 @@ decompress helloStored
 
 ## Структура проекта
 
-* src/Data/BitStream.hs – побитовое чтение (LSB first)
-* src/Data/Huffman.hs – построение канонических деревьев Хаффмана, декодирование символов, чтение длин
-* src/Codec/Deflate/GlobalTypes.hs – константы (таблицы длин и расстояний) и фиксированные деревья Хаффмана
-* src/Codec/Deflate/Decoder.hs – обработка блоков DEFLATE (stored, fixed, dynamic) и LZ77
-* src/Codec/Deflate.hs – публичная функция decompress
+* `src/Data/BitStream.hs` – побитовое чтение (LSB first)
+* `src/Data/Huffman.hs` – построение канонических деревьев Хаффмана, декодирование символов, чтение длин
+* `src/Codec/Deflate/GlobalTypes.hs` – константы (таблицы длин и расстояний) и фиксированные деревья Хаффмана
+* `src/Codec/Deflate/Decoder.hs` – обработка блоков DEFLATE (stored, fixed, dynamic) и LZ77
+* `src/Codec/Deflate.hs` – публичная функция decompress
 
 ## Примечания
 
