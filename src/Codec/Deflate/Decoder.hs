@@ -27,10 +27,9 @@ addByte w = modify (w:)
 copyBytes :: Int -> Int -> DecompressM ()
 copyBytes dist len = do
     hist <- get
-    let (_, targetTail) = splitAt (dist - 1) hist
-        -- Корректно обрабатываем случай, когда длина копирования больше дистанции (самокопирование)
-        cycledPattern = take len (cycle (take dist targetTail))
-    modify (\h -> reverse cycledPattern ++ h)
+    let pattern = reverse (take dist hist) -- there was the problem with overlapping LZ77 copy when distance < length, now it's correct
+        copied = take len (cycle pattern)
+    modify (\h -> reverse copied ++ h)
 
 -- Поднимаем операции чтения битов из BitReader в DecompressM
 readBitD :: DecompressM Bool
